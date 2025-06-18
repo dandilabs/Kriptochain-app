@@ -8,7 +8,7 @@
         <div class="container py-4">
             <div class="row justify-content-center">
                 <div class="col-lg-10 text-center">
-                    <span class="badge bg-primary mb-3">{{ $post->category->name ?? '-' }}</span>
+                    <span class="badge bg-primary mb-3 mt-3">{{ $post->category->name ?? '-' }}</span>
                     <h1 class="fw-bold mb-3">{{ $post->title }}</h1>
                     <div class="d-flex justify-content-center align-items-center">
                         {{-- <img src="{{ asset($post->user->avatar ?? 'assets/images/team/author1.jpg') }}"
@@ -32,32 +32,51 @@
         <div class="container">
             <div class="row justify-content-center">
                 <!-- Main Content -->
-                <div class="col-lg-8">
-                    <article class="blog-post">
+                <div class="col">
+                    <div class="card h-100 border-0 shadow-sm">
                         <!-- Featured Image -->
                         @if ($post->image)
-                            <img src="{{ asset('storage/' . $post->image) }}" class="img-fluid rounded mb-4"
+                            <img src="{{ asset('storage/' . $post->image) }}" class="card-img-top"
                                 alt="{{ $post->title }}">
                         @endif
 
                         <!-- Social Share -->
-                        <div class="d-flex justify-content-between align-items-center mb-4">
+                        <div class="d-flex justify-content-between align-items-center mb-5">
                             <div class="d-flex gap-2">
+                                <!-- Twitter -->
                                 <a href="https://twitter.com/intent/tweet?text={{ urlencode($post->title) }}&url={{ urlencode(request()->fullUrl()) }}"
-                                    class="btn btn-sm btn-outline-secondary" target="_blank"><i
-                                        class="bi bi-twitter"></i></a>
+                                    class="btn btn-sm btn-outline-twitter rounded-circle" target="_blank"
+                                    style="width:40px;height:40px;--bs-btn-hover-color:#fff;--bs-btn-hover-bg:#1DA1F2;">
+                                    <i class="bi bi-twitter"></i>
+                                </a>
+
+                                <!-- Facebook -->
                                 <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(request()->fullUrl()) }}"
-                                    class="btn btn-sm btn-outline-secondary" target="_blank"><i
-                                        class="bi bi-facebook"></i></a>
+                                    class="btn btn-sm btn-outline-facebook rounded-circle" target="_blank"
+                                    style="width:40px;height:40px;--bs-btn-hover-color:#fff;--bs-btn-hover-bg:#4267B2;">
+                                    <i class="bi bi-facebook"></i>
+                                </a>
+
+                                <!-- LinkedIn -->
                                 <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ urlencode(request()->fullUrl()) }}&title={{ urlencode($post->title) }}"
-                                    class="btn btn-sm btn-outline-secondary" target="_blank"><i
-                                        class="bi bi-linkedin"></i></a>
-                                <button class="btn btn-sm btn-outline-secondary"
-                                    onclick="navigator.clipboard.writeText('{{ request()->fullUrl() }}')"><i
-                                        class="bi bi-link-45deg"></i></button>
+                                    class="btn btn-sm btn-outline-linkedin rounded-circle" target="_blank"
+                                    style="width:40px;height:40px;--bs-btn-hover-color:#fff;--bs-btn-hover-bg:#0077B5;">
+                                    <i class="bi bi-linkedin"></i>
+                                </a>
+
+                                <!-- Copy Link -->
+                                <button class="btn btn-sm btn-outline-primary rounded-circle"
+                                    style="width:40px;height:40px;"
+                                    onclick="navigator.clipboard.writeText('{{ request()->fullUrl() }}')">
+                                    <i class="bi bi-link-45deg"></i>
+                                </button>
                             </div>
                             <div>
-                                <button class="btn btn-sm btn-outline-danger"><i class="bi bi-bookmark"></i></button>
+                                <!-- Bookmark -->
+                                <button class="btn btn-sm btn-outline-danger rounded-circle"
+                                    style="width:40px;height:40px;">
+                                    <i class="bi bi-bookmark"></i>
+                                </button>
                             </div>
                         </div>
 
@@ -67,21 +86,21 @@
                         </div>
 
                         <!-- Tags -->
-                        <div class="mt-5">
-                            <h5 class="h6">Tags:</h5>
+                        <div class="mt-5 pt-4 border-top">
+                            <h5 class="h6 mb-3">Tags:</h5>
                             <div class="d-flex flex-wrap gap-2">
                                 @foreach ($post->tags as $tag)
                                     <a href="{{ route('blog.tag', $tag->slug) }}"
-                                        class="badge bg-light text-dark text-decoration-none
-                @if (isset($currentTag) && $currentTag->id == $tag->id) fw-bold border border-primary @endif">
-                                        {{ $tag->name }}
+                                        class="badge bg-light text-dark text-decoration-none px-3 py-2 rounded-pill
+                @if (isset($currentTag) && $currentTag->id == $tag->id) border border-primary @endif">
+                                        #{{ $tag->name }}
                                     </a>
                                 @endforeach
                             </div>
                         </div>
 
                         <!-- Author Box -->
-                        <div class="card border-0 shadow-sm mt-5">
+                        {{-- <div class="card border-0 shadow-sm mt-5">
                             <div class="card-body">
                                 <div class="d-flex align-items-center">
                                     <img src="{{ asset($post->user->avatar ?? 'assets/images/team/author1.jpg') }}"
@@ -91,11 +110,11 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
 
                         <!-- (Optional) Comments Section, jika ingin dinamis tambahkan di sini -->
 
-                    </article>
+                    </div>
                 </div>
 
                 <!-- Sidebar -->

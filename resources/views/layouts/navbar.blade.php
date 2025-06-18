@@ -27,7 +27,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link d-flex align-items-center gap-1" href="tentang.html">
+                    <a class="nav-link d-flex align-items-center gap-1" href="{{route('tentang.index')}}">
                         <i class="bi bi-people" aria-hidden="true"></i> Tentang Kami
                     </a>
                 </li>

@@ -29,6 +29,7 @@ use App\Http\Controllers\Membership\AlphaVantageController;
 // });
 
 Route::get('/', PricingController::class)->name('membership.pricing');
+Route::get('/tentang-kami', [PricingController::class,'tentang'])->name('tentang.index');
 
 Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
 Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');

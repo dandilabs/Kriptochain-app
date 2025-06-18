@@ -78,4 +78,9 @@ class PricingController extends Controller
         }
         return $promo->discount_value;
     }
+
+    public function tentang()
+    {
+        return view('tentang');
+    }
 }

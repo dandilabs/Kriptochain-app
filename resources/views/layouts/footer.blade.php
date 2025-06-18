@@ -12,7 +12,7 @@
                                 <img src="/placeholder.svg?height=40&width=40&text=Logo" alt="KriptoChain Logo"
                                     class="footer-logo" width="40" height="40">
                             </picture> -->
-                        <img src="assets/images/logo/kriptochain.png" alt="KriptoChain Logo" class="footer-logo"
+                        <img src="{{asset('frontend/assets/images/logo/kriptochain.png')}}" alt="KriptoChain Logo" class="footer-logo"
                             width="40" height="40">
                         <span class="footer-title">KriptoChain</span>
                     </div>
