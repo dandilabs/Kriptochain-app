@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', 'Tentang Kami')
 
 @section('content')
     <!-- Hero Section Tentang Kami -->
